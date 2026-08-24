@@ -35,34 +35,13 @@ cube.position.set(0.0, 2.0, 0.0);
 // add the cube to the scene
 scene.add(cube);
 
-let col = 0.0
-let lin = 0.0
-let cont = 0
-
-while(cont <= 8){
-  if(cont >= 4){
-    if(cont%2 == 0){
-      lin = -lin
-    } else{
-      col = -col
-    }  
+for(var i = -8.0; i <= 8.0; i = i+8.0){
+  for(var j = -8.0; j <= 8.0; j = j+8.0){
+    let cube = new THREE.Mesh(cubeGeometry, material);
+    cube.position.set(i, 2.0, j)
+    scene.add(cube);
   }
-  else{
-    if(cont%2 == 0){
-      lin = -(lin+8.0)
-    } else{
-      col = -(col+8.0)
-    }  
-  }
-
-  let cubeGeometry = new THREE.BoxGeometry(4, 4, 4);
-  let cube = new THREE.Mesh(cubeGeometry, material);
-  cube.position.set(col, 2.0, lin)
-  scene.add(cube);
-  
-  cont++;
 }
-
 
 // Use this to show information onscreen
 let controls = new InfoBox();
