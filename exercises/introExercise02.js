@@ -35,21 +35,18 @@ cube.position.set(0.0, 2.0, 0.0);
 // add the cube to the scene
 scene.add(cube);
 
-// create a cube 2
-let cubeGeometry2 = new THREE.BoxGeometry(2, 2, 2);
-let cube2 = new THREE.Mesh(cubeGeometry2, material);
-// position the cube
-cube2.position.set(0.0, 1.0, 8.0);
-// add the cube to the scene
-scene.add(cube2);
+let sphereGeometry = new THREE.SphereGeometry(3, 32, 16 );
+let sphereMaterial = setDefaultMaterial('yellow' );
+let sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+sphere.position.set(0.0, 3.0, 6.0)
+scene.add( sphere );
 
-// create a cube 3
-let cubeGeometry3 = new THREE.BoxGeometry(6, 6, 6);
-let cube3 = new THREE.Mesh(cubeGeometry3, material);
-// position the cube
-cube3.position.set(5.0, 3.0, -8.0);
-// add the cube to the scene
-scene.add(cube3);
+let cilindroGeometry = new THREE.CylinderGeometry(2, 2, 8 );
+let cilindroMaterial = setDefaultMaterial('pink' );
+let cilindro = new THREE.Mesh(cilindroGeometry, cilindroMaterial);
+cilindro.position.set(0.0, 4.0, -6.0)
+scene.add( cilindro);
+
 
 
 // Use this to show information onscreen
