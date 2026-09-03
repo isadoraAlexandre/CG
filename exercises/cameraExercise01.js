@@ -48,6 +48,35 @@ function keyboardUpdate() {
    keyboard.update();
    
    // DICA: Insira aqui seu código para mover a câmera
+   if ( keyboard.pressed("left") ){
+      camLook.x -= 0.5
+      camera.lookAt(camLook);
+   }
+
+   if ( keyboard.pressed("right") ){
+      camLook.x += 0.5
+      camera.lookAt(camLook);
+   }
+
+   if ( keyboard.pressed("up") ) {
+      camLook.z += 0.5
+      camera.lookAt(camLook);
+   }
+   if ( keyboard.pressed("down") ){
+      camLook.z -= 0.5
+      camera.lookAt(camLook);
+   }
+
+   if (keyboard.pressed("A")) {
+      camLook.y -= 0.5
+      camera.lookAt(camLook);
+   }
+   if (keyboard.pressed("S")){
+      camLook.y += 0.5
+      camera.lookAt(camLook);
+   }
+
+
    
    updateCamera();
 }
