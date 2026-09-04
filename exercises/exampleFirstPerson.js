@@ -3,16 +3,19 @@ import Stats from '../build/jsm/libs/stats.module.js';
 import {PointerLockControls} from '../build/jsm/controls/PointerLockControls.js';
 import {initRenderer,
         initDefaultBasicLight,
-        onWindowResize} from "../libs/util/util.js";
+        onWindowResize,
+        setDefaultMaterial} from "../libs/util/util.js";
 
 var stats = new Stats();          // To show FPS information
 var renderer = initRenderer("rgb(70, 150, 240)");    // View function in util/utils
 
 const scene = new THREE.Scene();
+
 const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.set(-5, 2, -5);
 camera.lookAt(new THREE.Vector3(0, 2, 0));
 scene.add(camera);
+
 
 const raycaster = new THREE.Raycaster(new THREE.Vector3(), new THREE.Vector3(0, -1, 0).normalize(), 0, 2);
 initDefaultBasicLight(scene); // Create a basic light to illuminate the scene
@@ -103,6 +106,16 @@ walls[4].rotation.y = Math.PI / -2;
 
 walls.forEach(wall => scene.add(wall));
 
+
+let tampoGeometria = new THREE.BoxGeometry(2, 2, 2);
+let tampomaterial = setDefaultMaterial('yellow')
+let tampo = new THREE.Mesh(tampoGeometria, tampomaterial);
+tampo.position.set(0.0, 1, 0.0);
+// add the cube to the scene
+scene.add(tampo);
+
+
+
 const controls = new PointerLockControls(camera, renderer.domElement);
 
 const blocker = document.getElementById('blocker');
@@ -143,16 +156,16 @@ render();
 
 function movementControls(key, value) {
     switch (key) {
-        case 87: // W
+        case 69: //E 87: // W
             moveForward = value;
             break;
-        case 83: // S
+        case 68: //D 83: // S
             moveBackward = value;
             break;
-        case 65: // A
+        case 83: //W 65: // A
             moveLeft = value;
             break;
-        case 68: // D
+        case 70: //68: // D
             moveRight = value;
             break;
         case 32:
